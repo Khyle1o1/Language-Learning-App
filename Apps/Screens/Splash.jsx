@@ -1,13 +1,17 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import { StyleSheet } from 'react-native'
 import { client } from '../Utils/KindConfig';
+import { AuthContext } from '../../App';
 
 export default function Splash() {
+    const {auth,setAuth}=useContext(AuthContext);
 
     const handleSignUp = async () => {
       const token = await client.register();
       if (token) {
+        console.log("SingUp Authenticated Successfuly")
+        setAuth(true)
         // User was authenticated
       }
     };
@@ -15,7 +19,8 @@ export default function Splash() {
     const handleSignIn = async () => {
       const token = await client.login();
       if (token) {
-        console.log("Authenticated Successfully")
+        console.log("SignInAuthenticated Successfully")
+        setAuth(true)
         // User was authenticated
       }
     };
@@ -41,7 +46,7 @@ const styles = StyleSheet.create({
     text : {
         textAlign: 'center',
         color: 'white',
-        fontFamily: 'Noto Sans',
+        // fontFamily: 'Noto Sans',
         fontStyle: 'italic',
         fontSize: 15,
         fontWeight: 'medium',

@@ -1,29 +1,38 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Splash from './Apps/Screens/Splash';
-import { useEffect } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { client } from './Apps/Utils/KindConfig';
+import TabNavigation from './Apps/Navigations/TabNavigation';
+import { NavigationContainer } from '@react-navigation/native';
 
+export const AuthContext=createContext();
 export default function App() {
+  const [auth,setAuth]=useState(false);
   useEffect(() => {
     checkAuthenticate();
-},[]);
+},[auth]);
 
 const checkAuthenticate = async () => {
   // Using `isAuthenticated` to check if the user is authenticated or not
   if (await client.isAuthenticated) {
     const userProfile = await client.getUserDetails();
-    console.log(userProfile); 
-    console.log("Authenticated")
+    setAuth(true);
       // Need to implement, e.g: call an api, etc...
   } else {
+    setAuth(false);
       // Need to implement, e.g: redirect user to sign in, etc..
   }
 };
 
   return (
     <View style={styles.container}>
-    <Splash/>
+    {/* <Splash/> */}
+    <AuthContext.Provider value={{auth,setAuth}}>
+        <NavigationContainer>
+          {auth?<TabNavigation/>:<Splash/>}
+        </NavigationContainer>
+    </AuthContext.Provider>
     </View>
   );
 }
