@@ -5,9 +5,15 @@ import { createContext, useEffect, useState } from 'react';
 import { client } from './Apps/Utils/KindConfig';
 import TabNavigation from './Apps/Navigations/TabNavigation';
 import { NavigationContainer } from '@react-navigation/native';
+import { useFonts } from 'expo-font';
 
 export const AuthContext=createContext();
 export default function App() {
+  const [fontsLoaded, fontError] = useFonts({
+    'Notosans': require('./assets/fonts/NotoSans-Regular.ttf'),
+  });
+
+
   const [auth,setAuth]=useState(false);
   useEffect(() => {
     checkAuthenticate();

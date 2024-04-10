@@ -21,8 +21,8 @@ export default function Header() {
         <Image source={{uri:userDetail?.picture}}
             style={{width:45,height:45, borderRadius:99}}></Image>
         <View >
-            <Text style={{fontSize:18, fontWeight:'bold'}}>Hi, {userDetail?.given_name}</Text>
-            <Text style={{fontSize:20, fontWeight:'bold', color:Colors.DARKPLUM}}>Maayad ha Adlaw</Text>
+            <Text style={{fontSize:18, fontWeight:'bold',fontFamily:'Notosans'}}>Hi, {userDetail?.given_name}</Text>
+            <Text style={{fontSize:20, fontWeight:'bold', color:Colors.DARKPLUM,fontFamily:'Notosans'}}>Maayad ha Adlaw</Text>
         </View>
     </View>
     <View style={styles.input}>
