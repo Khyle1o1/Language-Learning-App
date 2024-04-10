@@ -2,6 +2,7 @@ import { View, Text, Button } from 'react-native'
 import React, { useContext } from 'react'
 import { client } from '../Utils/KindConfig';
 import { AuthContext } from '../../App';
+import Header from '../Components/Header';
 export default function LearnScreen() {
     const {auth,setAuth}=useContext(AuthContext)    
     const handleLogout = async () => {
@@ -13,9 +14,10 @@ export default function LearnScreen() {
     }
 };
   return (
-    <View>
-      <Text>LearnScreen</Text>
-      <Button title='Logout'onPress={handleLogout}>LogOut</Button>
+    <View style = {{padding:20, marginTop:25}}>
+      <Header/>
+      {/* <Text>LearnScreen</Text>
+      <Button title='Logout'onPress={handleLogout}>LogOut</Button> */}
     </View>
   )
 }

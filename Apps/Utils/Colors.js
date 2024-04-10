@@ -3,5 +3,7 @@ export default{
     DARKPLUM: '#480355',
     JET: '#302B27',
     YELLOW: '#FFD006',
-    DISABLED: '#EBEAEA'
+    DISABLED: '#EBEAEA',
+    WHITE: '#FFFFFF',
+    GRAY:   ''
 }
